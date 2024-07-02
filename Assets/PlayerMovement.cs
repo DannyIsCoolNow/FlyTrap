@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 currspeed;
     float speedX, speedY;
 
-
+    private SpriteRenderer render;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        render = GetComponent<SpriteRenderer>();
+        var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
+        if (transform.position.x != mousePos.x) {
+            render.flipX = transform.position.x > mousePos.x;
+        }
+
         float speedX = Input.GetAxisRaw("Horizontal");
         float speedY = Input.GetAxisRaw("Vertical");
         Vector3 playerinput = new Vector3(speedX, speedY, 0);
