@@ -16,7 +16,12 @@ public class Revolver : MonoBehaviour
 
     public float bulletForce;
     private Rigidbody2D rb;
-    [SerializeField] Transform firePoint;
+    public Transform firePoint;
+    private bool isReloading = false;
+
+    [SerializeField] private AudioClip[] RevolverShot;
+    [SerializeField] private AudioClip RevolverReload;
+    [SerializeField] private AudioClip ChamberEmpty;
 [SerializeField] GameObject bulletPrefab;
 
 
@@ -51,39 +56,53 @@ public class Revolver : MonoBehaviour
         {
             reloadInput();
         }
+        if (isReloading==true && timeBeforeReload == 0){
+            reload();
+        }
     }
 
 void reloadInput(){
 
-if (timeBeforeReload==0){
-    reload();
+if (isReloading==false){
+    isReloading=true;
 }
+else{ 
+    isReloading=false;
 
+}
 
 }
 
 void reload(){
-
-numBullets = maxBullets;
+    if (numBullets<maxBullets){
+        SoundFXManager.instance.PlaySoundFXClip(RevolverReload, transform, 1f);
+numBullets = numBullets+1;
+    } else {
+        isReloading=false;
+    }
 timeBeforeReload = timeBetweenReload;
 
 }
 
 void shootInput(){
 
-if (timeBeforeShoot==0 && numBullets>0){
+if (timeBeforeShoot==0 && numBullets>0 && isReloading==false){
     shoot();
 
     }
-
+    if (numBullets==0 && timeBeforeShoot==0){
+        SoundFXManager.instance.PlaySoundFXClip(ChamberEmpty, transform, 1f);
+        timeBeforeShoot=timeBetweenShot;
+    }
 }
 
 void shoot(){
 
-GameObject bullet = Instantiate(bulletPrefab, transform.position, new());
+GameObject bullet = Instantiate(bulletPrefab, firePoint.position, new());
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
+        SoundFXManager.instance.PlayRandomSoundFXClip(RevolverShot, transform, 1f);
 
 timeBeforeShoot = timeBetweenShot;
 numBullets = numBullets -1;
