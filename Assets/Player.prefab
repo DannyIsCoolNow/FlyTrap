@@ -207,12 +207,12 @@ MonoBehaviour:
   idleFrames:
   - {fileID: 21300000, guid: 24fbedb56d6e6d24598fbf023f5fc4e8, type: 3}
   runFrames:
-  - {fileID: 21300000, guid: e655600b59277d945aa5055553c612ab, type: 3}
-  - {fileID: 21300000, guid: e655600b59277d945aa5055553c612ab, type: 3}
+  - {fileID: 21300000, guid: 3f3dba6e5aa49864fa55c6ac05d40a4a, type: 3}
+  - {fileID: 21300000, guid: 3f3dba6e5aa49864fa55c6ac05d40a4a, type: 3}
   - {fileID: 21300000, guid: 346ea558dda0051479238c30d5ef0960, type: 3}
   - {fileID: 21300000, guid: 346ea558dda0051479238c30d5ef0960, type: 3}
-  - {fileID: 21300000, guid: e655600b59277d945aa5055553c612ab, type: 3}
-  - {fileID: 21300000, guid: e655600b59277d945aa5055553c612ab, type: 3}
+  - {fileID: 21300000, guid: 3f3dba6e5aa49864fa55c6ac05d40a4a, type: 3}
+  - {fileID: 21300000, guid: 3f3dba6e5aa49864fa55c6ac05d40a4a, type: 3}
   - {fileID: 21300000, guid: bfd347afe382c7444a44bf4aeb1b49d5, type: 3}
   - {fileID: 21300000, guid: bfd347afe382c7444a44bf4aeb1b49d5, type: 3}
   hitFrame: {fileID: 21300000, guid: 4f36606f1074ccd4895753eeb1b919be, type: 3}
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 1374475051606438957}
   m_Layer: 0
   m_Name: Arm
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
