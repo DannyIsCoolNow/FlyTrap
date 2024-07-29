@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -4237660185215124779}
   - component: {fileID: 4641330710674841969}
   - component: {fileID: -5263187760150455890}
+  - component: {fileID: 6533985351698474899}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -54,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -148,3 +149,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.05
+--- !u!114 &6533985351698474899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215432296443021812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5db3d4bd9572e4aa6937c12f0231e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDist: 30

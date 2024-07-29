@@ -18,6 +18,7 @@ public class Revolver : MonoBehaviour
     private Rigidbody2D rb;
     public Transform firePoint;
     private bool isReloading = false;
+    public GameObject flashPrefab;
 
     [SerializeField] private AudioClip[] RevolverShot;
     [SerializeField] private AudioClip RevolverReload;
@@ -102,6 +103,9 @@ GameObject bullet = Instantiate(bulletPrefab, firePoint.position, new());
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
+        
+        Instantiate(flashPrefab, transform.position, transform.rotation);
+
         SoundFXManager.instance.PlayRandomSoundFXClip(RevolverShot, transform, 1f);
 
 timeBeforeShoot = timeBetweenShot;
