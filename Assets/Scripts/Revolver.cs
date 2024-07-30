@@ -99,7 +99,7 @@ if (timeBeforeShoot==0 && numBullets>0 && isReloading==false){
 
 void shoot(){
 
-GameObject bullet = Instantiate(bulletPrefab, firePoint.position, new());
+GameObject bullet = Instantiate(bulletPrefab, firePoint.position, transform.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);

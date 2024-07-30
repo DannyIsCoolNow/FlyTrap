@@ -10,13 +10,20 @@ public class PlayerMovement : MonoBehaviour
     private float friction = 50.0f;
     Vector3 currspeed;
     float speedX, speedY;
-
+    public KeyCode Dodgeroll;
+    public float dodgespeed;
+    public float dodgelength;
     private SpriteRenderer render;
-
+    private bool rolling = false;
+    private float rollfor;
+    private float originalSpeed;
+    private float justRolled=0;
+    public float rollSlowTime;
+    public float rollSlow;
     // Start is called before the first frame update
     void Start()
     {
-        
+        originalSpeed = movSpeed;
     }
 
     // Update is called once per frame
@@ -47,5 +54,32 @@ public class PlayerMovement : MonoBehaviour
         }
         transform.position += (currspeed * Time.deltaTime);
 
+        if (Input.GetKeyDown(Dodgeroll) && rolling!=true && justRolled==0){
+            rollfor = dodgelength;
+            rolling = true;
+        }
+        if (rolling==true && rollfor>=0){
+            movSpeed = dodgespeed;
+            rollfor-=1;
+            if (rollfor==0){
+                justRolled = rollSlowTime;
+            }
+        }
+        if (rollfor<=0 && justRolled==0){
+            movSpeed = originalSpeed;
+            rolling=false;
+        }
+
+    if (justRolled>0){
+        movSpeed = rollSlow;
+        justRolled-=1;
+        
     }
+
+
+
+    }
+
+
+
 }
